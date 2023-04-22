@@ -33,4 +33,15 @@ int _printf(const char *format, ...)
 			else if(format[i + 1] == 's')
 			{
 				mystr = va_arg(myaps, char *);
+
+				lenstr =strlen(mystr);
+                for (j = 0; j < lenstr; j++){
+                    _putchar(mystr[j]);
+                }
+                i++;
+
+            }else{
+                _putchar(format[i]);
+            }
 }
+
