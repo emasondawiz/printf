@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 /**
  * _putchar - putchar function
  * @c: Input value
