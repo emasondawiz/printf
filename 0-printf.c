@@ -22,13 +22,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			_putchar(format[i]);
+			putchar(format[i]);
 		}
 		else if (format[i] == '%')
 		{
 			if (format[i + 1] == 'c')
 			{
-				_putchar(va_arg(myaps, int));
+				putchar(va_arg(myaps, int));
 				i++;
 			}
 			else if (format[i + 1] == 's')
@@ -37,30 +37,16 @@ int _printf(const char *format, ...)
 				lenstr = strlen(mystr);
 				for (j = 0; j < lenstr; j++)
 				{
-					_putchar(mystr[j]);
+					putchar(mystr[j]);
 				}
 				i++;
 			}
 			else
 			{
-				_putchar(format[i]);
+				putchar(format[i]);
 			}
 		}
 	}
 	va_end(myaps);
 	return (0);
-}
-
-
-
-
-/**
- * _putchar - putchar function
- * @c: Input value
- * Return: Always success
- */
-
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
 }
