@@ -1,5 +1,5 @@
 #include "main.h"
-#include "_putchar.c"
+
 /**
  * _printf - produces output according to a format
  * @format: character string
@@ -49,4 +49,18 @@ int _printf(const char *format, ...)
 	}
 	va_end(myaps);
 	return (0);
+}
+
+
+
+
+/**
+ * _putchar - putchar function
+ * @c: Input value
+ * Return: Always success
+ */
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
