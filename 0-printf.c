@@ -9,12 +9,11 @@
 
 int _printf(const char *format, ...)
 {
-	int i, length, counter = 0;
+	int i, j, lenstr,  length, counter = 0;
 	va_list myaps;
 	char *mystr = "";
 
 	length = strlen(format);
-
 	va_start(myaps, format);
 	for (i = 0; i < length; i++)
 	{
@@ -34,7 +33,12 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 's')
 			{
 				mystr = va_arg(myaps, char *);
-				myfunction(mystr, strlen(mystr), 0, &counter);
+				lenstr = strlen(mystr);
+				for (j = 0; j < lenstr; j++)
+				{
+					_putchar(mystr[j]);
+					counter = counter + 1;
+				}
 				i++;
 			}
 			else
