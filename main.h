@@ -8,4 +8,5 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
+void myfunction(char *str, int len, int j, int *counter);
 #endif
