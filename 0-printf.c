@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(myaps);
-	return (counter - 1);
+	return (counter);
 }
 
 /**
