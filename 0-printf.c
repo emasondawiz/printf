@@ -9,7 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-	int i, j, lenstr,  length, counter = 0;
+	int i, length, counter = 0;
 	va_list myaps;
 	char *mystr = "";
 
@@ -33,25 +33,13 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 's')
 			{
 				mystr = va_arg(myaps, char *);
-				lenstr = strlen(mystr);
-				for (j = 0; j < lenstr; j++)
-				{
-					_putchar(mystr[j]);
-					counter = counter + 1;
-				}
+				myfunction(mystr, strlen(mystr), 0, &counter);
 				i++;
-			}
-			else if (format[i + 1] == '%')
-			{
-				counter = counter + 1;
-				_putchar(format[i]);
-				i++;
-			}
+			} else if (format[i + 1] == '%')
+				myfunc2(format[i], &i, &counter);
 			else
 			{
-				counter = counter + 1;
-				_putchar(format[i]);
-				i++;
+				myfunc2(format[i], &i, &counter);
 				_putchar('%');
 			}
 		}
@@ -86,4 +74,18 @@ void myfunction(char *str, int len, int j, int *counter)
 		_putchar(str[j]);
 		*counter = *counter + 1;
 	}
+}
+
+/**
+ * myfunc2 - Function that kills space
+ * @i: Input value
+ * @counter: Input
+ * @str: Input value
+ */
+
+void myfunc2(char str, int *i, int *counter)
+{
+	*counter = *counter + 1;
+	_putchar(str);
+	*i = *i + 1;
 }
