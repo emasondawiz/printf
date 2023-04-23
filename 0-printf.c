@@ -41,11 +41,18 @@ int _printf(const char *format, ...)
 				}
 				i++;
 			}
+			else if (format[i + 1] == '%')
+			{
+				counter = counter + 1;
+				_putchar(format[i]);
+				i++;
+			}
 			else
 			{
 				counter = counter + 1;
 				_putchar(format[i]);
 				i++;
+				_putchar('%');
 			}
 		}
 	}
