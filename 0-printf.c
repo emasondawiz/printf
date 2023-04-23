@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 's')
 			{
 				mystr = va_arg(myaps, char *);
-				myfunction(mystr, strlen(mystr), 0, &counter);
+				myfunction(mystr, 0, &counter);
 				i++;
 			} else if (format[i + 1] == '%')
 				myfunc2(format[i], &i, &counter);
@@ -63,13 +63,20 @@ int _putchar(char c)
 /**
  * myfunction - Function that kills space
  *  @str: Input value
- *  @len: Input value
  *  @j: Input value
  *  @counter: Input value
 */
-void myfunction(char *str, int len, int j, int *counter)
+void myfunction(char *str, int j, int *counter)
 {
-	for (j = 0; j < len; j++)
+	int p;
+
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
+
+	p = strlen(str);
+	for (j = 0; j < p; j++)
 	{
 		_putchar(str[j]);
 		*counter = *counter + 1;
