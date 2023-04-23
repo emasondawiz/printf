@@ -10,7 +10,6 @@
 int _printf(const char *format, ...)
 {
 	int i, length;
-
 	va_list myaps;
 
 	char *mystr = "";
@@ -21,9 +20,7 @@ int _printf(const char *format, ...)
 	for (i = 0; i < length; i++)
 	{
 		if (format[i] != '%')
-		{
 			putchar(format[i]);
-		}
 		else
 		{
 			if (format[i + 1] == 'c')
