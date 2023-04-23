@@ -32,9 +32,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
 			{
-				int n = va_arg(myaps, int);
-
-				lengthcheck(n, 0, &counter);
+				lengthcheck(va_arg(myaps, int), 0, &counter);
 				i++;
 			}
 			else if (format[i + 1] == 's')
