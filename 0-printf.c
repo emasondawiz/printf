@@ -30,6 +30,13 @@ int _printf(const char *format, ...)
 				_putchar(va_arg(myaps, int));
 				i++;
 			}
+			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
+			{
+				int n = va_arg(myaps, int);
+
+				lengthcheck(n, 0, &counter);
+				i++;
+			}
 			else if (format[i + 1] == 's')
 			{
 				mystr = va_arg(myaps, char *);
@@ -95,4 +102,44 @@ void myfunc2(char str, int *i, int *counter)
 	*counter = *counter + 1;
 	_putchar(str);
 	*i = *i + 1;
+}
+/**
+ * lengthcheck - length of function
+ * @num: input value
+ * @count: input value
+ * @counter: input value
+ */
+
+void lengthcheck(int num, int count, int *counter)
+{
+	int n, calc, newcal = 0, holder = 0;
+	int exp = 1, i, a;
+
+	if (num < 0)
+	{
+		_putchar('-');
+		num = -(num);
+	}
+	calc = num;
+	n = num;
+	count = count + 1;
+
+	while (n / 10 != 0)
+	{
+		count++;
+		n /= 10;
+	}
+	for (a = 0; a < count; a++)
+	{
+		for (i = a + 1; i < count; i++)
+		{
+			exp = exp * 10;
+		}
+		holder = calc / exp;
+		newcal = calc - (holder * exp);
+		calc = newcal;
+		_putchar(holder + '0');
+		*counter = *counter + 1;
+		exp = 1;
+	}
 }
