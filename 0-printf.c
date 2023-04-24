@@ -31,6 +31,8 @@ int _printf(const char *format, ...)
 				counter = counter + allinchar('%', 3, myaps, &i);
 			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 				counter = counter + lengthcheck(myaps, 0, &i);
+			else if (format[i + 1] == 'u')
+				counter = counter + my_unsigned_int(myaps, 0, &i, 1);
 			else
 				counter = counter + allinchar(format[i + 1], 4, myaps, &i);
 		}
@@ -150,4 +152,44 @@ int lengthcheck(va_list myaps, int count, int *z)
 	}
 	*z = *z + 1;
 	return (fixs + count);
+}
+/**
+ * my_unsigned_int - unsigned function
+ * @myaps: input value
+ * @count: input value
+ * @z: input value
+ * @key: input value
+ *
+ * Return: 0
+ */
+int my_unsigned_int(va_list myaps, int count, int *z, int key)
+{
+	int exp = 1, i, a;
+	unsigned int calc, holder = 0, newcal = 0, n;
+
+	unsigned int num = va_arg(myaps, unsigned int);
+
+	calc = num;
+	n = num;
+	count = count + 1;
+
+	while (n / 10 != 0)
+	{
+		count++;
+		n /= 10;
+	}
+	for (a = 0; a < count; a++)
+	{
+		for (i = a + 1; i < count; i++)
+		{
+			exp = exp * 10;
+		}
+		holder = calc / exp;
+		newcal = calc - (holder * exp);
+		calc = newcal;
+		_putchar(holder + '0');
+		exp = 1;
+	}
+	*z = *z + 1;
+	return (count);
 }
