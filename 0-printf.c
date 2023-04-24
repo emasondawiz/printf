@@ -94,8 +94,8 @@ int allinchar(char c, int diff, va_list myaps, int *i)
 	{
 		_putchar('%');
 		_putchar(c);
-		*i = *i + 1 + 1;
-		return (2);
+		*i = *i + 1;
+		return (1);
 	}
 	else
 		return (0);
