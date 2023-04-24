@@ -89,5 +89,5 @@ int special_string(va_list myaps, int *i)
 	}
 
 	*i = *i + 1;
-	return (len + 2 + demo);
+	return (len + 1 + demo);
 }
