@@ -9,8 +9,12 @@
 
 int _printf(const char *format, ...)
 {
-	int i, length = strlen(format), counter = 0;
+	int i, length, counter = 0;
 	va_list myaps;
+
+	if (format == NULL)
+		format = "(null)";
+	length = strlen(format);
 
 	va_start(myaps, format);
 	for (i = 0; i < length; i++)
@@ -73,6 +77,8 @@ int allinchar(char c, int diff, va_list myaps, int *i)
 
 		*i = *i + 1;
 		str = va_arg(myaps, char *);
+		if (str == NULL)
+			str = "(null)";
 		len = strlen(str);
 		for (j = 0; j < len; j++)
 			_putchar(str[j]);
