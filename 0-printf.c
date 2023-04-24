@@ -34,13 +34,15 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 'u')
 				counter = counter + my_unsigned_int(myaps, 0, &i);
 			else if (format[i + 1] == 'o')
-				counter = counter + conversion(myaps, 0, 8, &i);
+				counter = counter + conversion(va_arg(myaps, unsigned int), 0, 8, &i);
 			else if (format[i + 1] == 'X')
-				counter = counter + conversion(myaps, 1, 16, &i);
+				counter = counter + conversion(va_arg(myaps, unsigned int), 1, 16, &i);
 			else if (format[i + 1] == 'b')
-				counter = counter + conversion(myaps, 0, 2, &i);
+				counter = counter + conversion(va_arg(myaps, unsigned int), 0, 2, &i);
 			else if (format[i + 1] == 'x')
-				counter = counter + conversion(myaps, 0, 16, &i);
+				counter = counter + conversion(va_arg(myaps, unsigned int), 0, 16, &i);
+			else if (format[i + 1] == 'S')
+				counter = counter + special_string(myaps, &i);
 			else
 				counter = counter + allinchar(format[i + 1], 4, myaps, &i);
 		}

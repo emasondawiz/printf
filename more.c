@@ -1,20 +1,18 @@
 #include "main.h"
 /**
  * conversion - function function
- * @myaps: Input value
+ * @n: Input value
  * @diff: Input value
  * @base: Input value
  * @ii: Input value
  * Return: Always 0
  */
 
-int conversion(va_list myaps, int diff, int base, int *ii)
+int conversion(unsigned int n, int diff, int base, int *ii)
 {
 	int i, j, counter = 0;
 	unsigned int temp, div, mod = 0;
 	char *arr;
-
-	unsigned int n = va_arg(myaps, unsigned int);
 
 	temp = n, div = n;
 
@@ -49,4 +47,47 @@ int conversion(va_list myaps, int diff, int base, int *ii)
 	*ii = *ii + 1;
 	free(arr);
 	return (counter);
+}
+/**
+ * special_string - Special function
+ * @i: Input value
+ * @myaps: Input valur
+ * Return: Counters
+ */
+
+int special_string(va_list myaps, int *i)
+{
+	char *str;
+	int a, len, key = 0, demo = 0;
+
+	str = va_arg(myaps, char *);
+
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
+
+	len = strlen(str);
+
+	for (a = 0; a < len; a++)
+	{
+		if (str[a] < 32 || str[a] >= 127)
+		{
+			_putchar('\\');
+			_putchar('x');
+			if (str[a] < 16)
+			{
+				demo = 1;
+				_putchar('0');
+			}
+			conversion(str[a], 1, 16, &key);
+		}
+		else
+		{
+			_putchar(str[a]);
+		}
+	}
+
+	*i = *i + 1;
+	return (len + 2 + demo);
 }

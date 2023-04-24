@@ -11,5 +11,6 @@ int _printf(const char *format, ...);
 int lengthcheck(va_list myaps, int count, int *z);
 int allinchar(char c, int diff, va_list myaps, int *i);
 int my_unsigned_int(va_list myaps, int count, int *z);
-int conversion(va_list myaps, int diff, int base, int *ii);
+int conversion(unsigned int n, int diff, int base, int *ii);
+int special_string(va_list myaps, int *i);
 #endif
