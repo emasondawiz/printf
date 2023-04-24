@@ -120,4 +120,32 @@ int lengthcheck(int num, int count, int *z)
 	int n, calc, newcal = 0, holder = 0, fix = 0;
 	int exp = 1, i, a;
 
+	if (num < 0)
+	{
+		_putchar('-');
+		fix = 1;
+		num = -(num);
+	}
+	calc = num;
+	n = num;
+	count = count + 1;
+	while (n / 10 != 0)
+	{
+		count++;
+		n /= 10;
+	}
+	for (a = 0; a < count; a++)
+	{
+		for (i = a + 1; i < count; i++)
+		{
+			exp = exp * 10;
+		}
+		holder = calc / exp;
+		newcal = calc - (holder * exp);
+		calc = newcal;
+		_putchar(holder + '0');
+		exp = 1;
+	}
+	*z = *z + 1;
+	return (fix + count);
 }
