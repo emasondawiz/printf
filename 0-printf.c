@@ -117,13 +117,13 @@ int allinchar(char c, int diff, va_list myaps, int *i)
 
 int lengthcheck(int num, int count, int *z)
 {
-	int n, calc, newcal = 0, holder = 0, fix = 0;
+	int n, calc, newcal = 0, holder = 0, fixs = 0;
 	int exp = 1, i, a;
 
 	if (num < 0)
 	{
 		_putchar('-');
-		fix = 1;
+		fixs = 1;
 		num = -(num);
 	}
 	calc = num;
@@ -147,5 +147,5 @@ int lengthcheck(int num, int count, int *z)
 		exp = 1;
 	}
 	*z = *z + 1;
-	return (fix + count);
+	return (fixs + count);
 }
