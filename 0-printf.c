@@ -9,44 +9,24 @@
 
 int _printf(const char *format, ...)
 {
-	int i, length, counter = 0;
+	int i, length = strlen(format), counter = 0;
 	va_list myaps;
-	char *mystr = "";
 
-	length = strlen(format);
 	va_start(myaps, format);
 	for (i = 0; i < length; i++)
 	{
 		if (format[i] != '%')
-		{
-			counter = counter + 1;
-			_putchar(format[i]);
-		}
+			counter = counter + allinchar(format[i], 0, myaps, &i);
 		else if (format[i] == '%')
 		{
 			if (format[i + 1] == 'c')
-			{
-				counter = counter + 1;
-				_putchar(va_arg(myaps, int));
-				i++;
-			}
-			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
-			{
-				lengthcheck(va_arg(myaps, int), 0, &counter);
-				i++;
-			}
+				counter = counter + allinchar('c', 1, myaps, &i);
 			else if (format[i + 1] == 's')
-			{
-				mystr = va_arg(myaps, char *);
-				myfunction(mystr, 0, &counter);
-				i++;
-			} else if (format[i + 1] == '%')
-				myfunc2(format[i], &i, &counter);
+				counter = counter + allinchar('s', 2, myaps, &i);
+			else if (format[i + 1] == '%')
+				counter = counter + allinchar('%', 3, myaps, &i);
 			else
-			{
-				myfunc2(format[i], &i, &counter);
-				_putchar('%');
-			}
+				counter = counter + allinchar(format[i + 1], 4, myaps, &i);
 		}
 	}
 	va_end(myaps);
@@ -66,41 +46,61 @@ int _putchar(char c)
 }
 
 /**
- * myfunction - Function that kills space
- *  @str: Input value
- *  @j: Input value
- *  @counter: Input value
-*/
-void myfunction(char *str, int j, int *counter)
-{
-	int p;
-
-	if (str == NULL)
-	{
-		str = "(null)";
-	}
-
-	p = strlen(str);
-	for (j = 0; j < p; j++)
-	{
-		_putchar(str[j]);
-		*counter = *counter + 1;
-	}
-}
-
-/**
- * myfunc2 - Function that kills space
+ * allinchar - Function that kills space
+ *  @c: Input value
+ *  @diff: Input value
+ *  @myaps: Input value
  * @i: Input value
- * @counter: Input
- * @str: Input value
- */
-
-void myfunc2(char str, int *i, int *counter)
+ * Return: Always zero
+*/
+int allinchar(char c, int diff, va_list myaps, int *i)
 {
-	*counter = *counter + 1;
-	_putchar(str);
-	*i = *i + 1;
+	if (diff == 0)
+	{
+		_putchar(c);
+		return (1);
+	}
+	else if (diff == 1)
+	{
+		*i = *i + 1;
+		_putchar(va_arg(myaps, int));
+		return (1);
+	}
+	else if (diff == 2)
+	{
+		int j, len;
+		char *str;
+
+		*i = *i + 1;
+		str = va_arg(myaps, char *);
+		if (str == NULL)
+			str = "(null)";
+		len = strlen(str);
+		for (j = 0; j < len; j++)
+			_putchar(str[j]);
+		return (len);
+	}
+	else if (diff == 3)
+	{
+		*i = *i + 1;
+		_putchar(c);
+		return (1);
+	}
+	else if (diff == 4)
+	{
+		_putchar('%');
+		_putchar(c);
+		*i = *i + 1;
+		return (2);
+	}
+	else
+		return (0);
 }
+
+
+
+
+
 /**
  * lengthcheck - length of function
  * @num: input value

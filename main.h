@@ -8,7 +8,6 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-void myfunction(char *str, int j, int *counter);
-void myfunc2(char str, int *i, int *counter);
 void lengthcheck(int num, int count, int *counter);
+int allinchar(char c, int diff, va_list myaps, int *i);
 #endif
