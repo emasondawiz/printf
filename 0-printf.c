@@ -73,8 +73,6 @@ int allinchar(char c, int diff, va_list myaps, int *i)
 
 		*i = *i + 1;
 		str = va_arg(myaps, char *);
-		if (str == NULL)
-			str = "(null)";
 		len = strlen(str);
 		for (j = 0; j < len; j++)
 			_putchar(str[j]);
