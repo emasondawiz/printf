@@ -99,6 +99,7 @@ int allinchar(char c, int diff, va_list myaps, int *i)
 	else if (diff == 3)
 	{
 		*i = *i + 1;
+		return (0);
 	}
 	else if (diff == 4)
 	{
