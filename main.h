@@ -8,6 +8,6 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int lengthcheck(int num, int count, int *z);
+int lengthcheck(va_list myaps, int count, int *z);
 int allinchar(char c, int diff, va_list myaps, int *i);
 #endif

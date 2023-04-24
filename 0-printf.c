@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == '%')
 				counter = counter + allinchar('%', 3, myaps, &i);
 			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
-				counter = counter + lengthcheck(va_arg(myaps, int), 0, &i);
+				counter = counter + lengthcheck(myaps, 0, &i);
 			else
 				counter = counter + allinchar(format[i + 1], 4, myaps, &i);
 		}
@@ -109,16 +109,18 @@ int allinchar(char c, int diff, va_list myaps, int *i)
 
 /**
  * lengthcheck - length of function
- * @num: input value
+ * @myaps: input value
  * @count: input value
  * @z: input value
  * Return: Always 0
  */
 
-int lengthcheck(int num, int count, int *z)
+int lengthcheck(va_list myaps, int count, int *z)
 {
-	int n, calc, newcal = 0, holder = 0, fixs = 0;
+	int n, calc, newcal = 0, holder = 0, fixs = 0, num;
 	int exp = 1, i, a;
+
+	num = va_arg(myaps, int);
 
 	if (num < 0)
 	{
