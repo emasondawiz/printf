@@ -77,10 +77,10 @@ int special_string(va_list myaps, int *i)
 			_putchar('x');
 			if (str[a] < 16)
 			{
-				demo = 1;
+				demo = demo + 1;
 				_putchar('0');
 			}
-			conversion(str[a], 1, 16, &key);
+			demo = demo + conversion(str[a], 1, 16, &key);
 		}
 		else
 		{
@@ -89,5 +89,5 @@ int special_string(va_list myaps, int *i)
 	}
 
 	*i = *i + 1;
-	return (len + 3 + demo);
+	return (len + 1 + demo);
 }
