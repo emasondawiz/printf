@@ -129,7 +129,7 @@ int hex_lower(unsigned long int nums, int base)
 }
 
 /**
- * special address - function that print address.
+ * special_address - function that print address.
  * @args: input value
  * @ii: Input value
  * Return: Count
