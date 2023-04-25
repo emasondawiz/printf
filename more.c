@@ -161,3 +161,47 @@ int special_address(va_list args, int *ii)
 	*ii = *ii + 1;
 	return (b + 2);
 }
+/**
+ * my_mixers - Fun with plus, space and pounds
+ * @gg: Input value
+ * @minw: Input value
+ * @mynum: Input value
+ * Return: always success
+ */
+
+int my_mixers(int mynum, int *gg, char minw)
+{
+	int calc, n, count = 0, ld = 0, exp = 1, holder = 0, newcal = 0, i, width;
+
+	width = minw - 48;
+
+	if (mynum < 0)
+	{
+		mynum = -(mynum);
+		_putchar('-');
+	}
+	else
+		_putchar(' ');
+	calc = mynum;
+	n = mynum;
+	count = count + 1;
+	while (n / 10 != 0)
+	{
+		count++;
+		n /= 10;
+	}
+	ld = width - count;
+	if (ld <= 1)
+	{
+		mix_helper(holder, calc, newcal, exp, count);
+	}
+	else
+	{
+		ld = ld - 1;
+		for (i = 0; i < ld; i++)
+			_putchar('#');
+		mix_helper(holder, calc, newcal, exp, count);
+	}
+	*gg = *gg + 1;
+	return (count + 1);
+}
