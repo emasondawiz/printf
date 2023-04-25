@@ -17,4 +17,6 @@ int hex_lower(unsigned long int nums, int base);
 int special_address(va_list args, int *ii);
 int my_mixers(int mynum, int *gg);
 void mix_helper(int holder, int calc, int newcal, int e, int c);
+int my_rot13(va_list myaps, int *ii);
+int my_rev(va_list myaps, int *ii);
 #endif
