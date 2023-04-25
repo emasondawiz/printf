@@ -14,4 +14,5 @@ int my_unsigned_int(va_list myaps, int count, int *z);
 int conversion(unsigned int n, int diff, int base, int *ii);
 int special_string(va_list myaps, int *i);
 int hex_lower(unsigned long int nums, int base);
+int special_address(va_list args, int *ii);
 #endif

@@ -43,6 +43,8 @@ int _printf(const char *format, ...)
 				counter = counter + conversion(va_arg(myaps, unsigned int), 0, 16, &i);
 			else if (format[i + 1] == 'S')
 				counter = counter + special_string(myaps, &i);
+			else if (format[i + 1] == 'p')
+				counter = counter + special_address(myaps, &i);
 			else
 				counter = counter + allinchar(format[i + 1], 4, myaps, &i);
 		}
@@ -50,7 +52,6 @@ int _printf(const char *format, ...)
 	va_end(myaps);
 	return (counter);
 }
-
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print

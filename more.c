@@ -58,7 +58,7 @@ int conversion(unsigned int n, int diff, int base, int *ii)
 int special_string(va_list myaps, int *i)
 {
 	char *str;
-	int a, len, demo = 0;
+	int a, len, key = 0, demo = 0;
 
 	str = va_arg(myaps, char *);
 
@@ -80,7 +80,7 @@ int special_string(va_list myaps, int *i)
 				demo = demo + 0;
 				_putchar('0');
 			}
-			demo = demo + hex_lower(str[a], 16);
+			demo = demo + conversion(str[a], 1, 16, &key);
 		}
 		else
 		{
@@ -126,4 +126,38 @@ int hex_lower(unsigned long int nums, int base)
 	}
 	free(arr);
 	return (count);
+}
+
+/**
+ * special address - function that print address.
+ * @args: input value
+ * @ii: Input value
+ * Return: Count
+ */
+int special_address(va_list args, int *ii)
+{
+	void *z;
+	char *y = "(nil)";
+	long int a;
+	int b;
+	int i;
+
+	z = va_arg(args, void*);
+
+
+	if (z == NULL)
+	{
+		for (i = 0; y[i] != '\0'; i++)
+		{
+			_putchar(y[i]);
+		}
+		return (i);
+	}
+
+	a = (unsigned long int)z;
+	_putchar('0');
+	_putchar('x');
+	b = hex_lower(a, 16);
+	*ii = *ii + 1;
+	return (b + 2);
 }
