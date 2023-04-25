@@ -45,9 +45,9 @@ int _printf(const char *format, ...)
 				counter = counter + special_string(myaps, &i);
 			else if (format[i + 1] == 'p')
 				counter = counter + special_address(myaps, &i);
-			else if ((format[i + 1] == ' ' && format[i + 2] == '#' && format[i + 4] == 'd')
-				 || (format[i + 2] == ' ' && format[i + 1] == '#' && format[i + 4] == 'd'))
-				counter = counter + my_mixers(va_arg(myaps, int), &i, format[i + 3]);
+			else if ((format[i + 1] == '+' && format[i + 2] == '#' && format[i + 3] == ' ')
+				 || (format[i + 1] == '+' && format[i + 2] == ' ' && format[i + 3] == '#'))
+				counter = counter + my_mixers(va_arg(myaps, int), &i);
 			else
 				counter = counter + allinchar(format[i + 1], 4, myaps, &i);
 		}

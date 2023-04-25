@@ -164,16 +164,15 @@ int special_address(va_list args, int *ii)
 /**
  * my_mixers - Fun with plus, space and pounds
  * @gg: Input value
- * @minw: Input value
  * @mynum: Input value
  * Return: always success
  */
 
-int my_mixers(int mynum, int *gg, char minw)
+int my_mixers(int mynum, int *gg)
 {
 	int calc, n, count = 0, ld = 0, exp = 1, holder = 0, newcal = 0, i, width;
 
-	width = minw - 48;
+	width = 5;
 
 	if (mynum < 0)
 	{
