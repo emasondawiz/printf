@@ -58,7 +58,7 @@ int conversion(unsigned int n, int diff, int base, int *ii)
 int special_string(va_list myaps, int *i)
 {
 	char *str;
-	int a, len, key = 0, demo = 0;
+	int a, len, demo = 0;
 
 	str = va_arg(myaps, char *);
 
@@ -80,7 +80,7 @@ int special_string(va_list myaps, int *i)
 				demo = demo + 0;
 				_putchar('0');
 			}
-			demo = demo + conversion(str[a], 1, 16, &key);
+			demo = demo + hex_lower(str[a], 16);
 		}
 		else
 		{
@@ -89,4 +89,41 @@ int special_string(va_list myaps, int *i)
 	}
 	*i = *i + 1;
 	return (len + demo);
+}
+
+
+/**
+ * hex_lower - function that uses full hexadecimal lowercase.
+ * @nums: Input value
+ * @base: Base to 16
+ * Return: always success
+ */
+int hex_lower(unsigned long int nums, int base)
+{
+	unsigned int *arr;
+	long int i;
+	unsigned long int temp = nums;
+	unsigned int count = 0;
+
+	while (nums / base != 0)
+	{
+		nums /= base;
+		count++;
+	}
+	count++;
+	arr = malloc(count * sizeof(long int));
+
+	for (i = 0; i < count; i++)
+	{
+		arr[i] = temp % 16;
+		temp /= base;
+	}
+	for (i = count - 1; i >= 0; i--)
+	{
+		if (arr[i] > 9)
+			arr[i] = arr[i] + 39;
+		_putchar(arr[i] + '0');
+	}
+	free(arr);
+	return (count);
 }
