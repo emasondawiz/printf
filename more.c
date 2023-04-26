@@ -80,7 +80,7 @@ int special_string(va_list myaps, int *i)
 				len = len + 1;
 				_putchar('0');
 			}
-			len = len + conversion(str[j], 0, 16, &key);
+			len = len + hex_lower(str[j]);
 		}
 		else
 		{
