@@ -149,12 +149,13 @@ int lengthcheck(va_list myaps, int count, int *z)
 	}
 	calc = num;
 	n = num;
-	count = count + 1;
+
 	while (n / 10 != 0)
 	{
 		count++;
 		n /= 10;
 	}
+	count = count + 1;
 	for (a = 0; a < count; a++)
 	{
 		for (i = a + 1; i < count; i++)
@@ -186,13 +187,13 @@ int my_unsigned_int(va_list myaps, int count, int *z)
 
 	calc = num;
 	n = num;
-	count = count + 1;
 
 	while (n / 10 != 0)
 	{
 		count++;
 		n /= 10;
 	}
+	count = count + 1;
 	for (a = 0; a < count; a++)
 	{
 		for (i = a + 1; i < count; i++)
