@@ -16,11 +16,12 @@ int conversion(unsigned int n, int diff, int base, int *ii)
 
 	temp = n, div = n;
 
-	while (temp > 0)
+	while (temp / base > 0)
 	{
 		temp /= base;
 		counter += 1;
 	}
+	counter = counter + 1;
 	arr = (char *)malloc(counter * sizeof(char));
 	for (i = 0; i < counter; i++)
 	{
@@ -58,7 +59,7 @@ int conversion(unsigned int n, int diff, int base, int *ii)
 int special_string(va_list myaps, int *i)
 {
 	char *str;
-	int a, len, key = 0, demo = 0;
+	int len = 0, key = 0, j = 0;
 
 	str = va_arg(myaps, char *);
 
@@ -66,29 +67,29 @@ int special_string(va_list myaps, int *i)
 	{
 		str = "(null)";
 	}
-
-	len = strlen(str);
-
-	for (a = 0; a < len; a++)
+	while (str[j] != '\0')
 	{
-		if (str[a] < 32 || str[a] >= 127)
+		j++;
+		if (str[j] < 32 || str[j] >= 127)
 		{
 			_putchar('\\');
 			_putchar('x');
-			if (str[a] < 16)
+			len = len + 2;
+			if (str[j] < 16)
 			{
-				demo = demo + 1;
+				len = len + 1;
 				_putchar('0');
 			}
-			demo = demo + conversion(str[a], 1, 16, &key);
+			len = len + conversion(str[j], 1, 16, &key);
 		}
 		else
 		{
-			_putchar(str[a]);
+			_putchar(str[j]);
+			len = len + 1;
 		}
 	}
 	*i = *i + 1;
-	return (len + demo + 2);
+	return (len);
 }
 
 
