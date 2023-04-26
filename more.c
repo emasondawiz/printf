@@ -59,7 +59,7 @@ int conversion(unsigned int n, int diff, int base, int *ii)
 int special_string(va_list myaps, int *i)
 {
 	char *str;
-	int len = 0, key = 0, j = 0;
+	int len = 0, j = 0;
 
 	str = va_arg(myaps, char *);
 
@@ -80,7 +80,7 @@ int special_string(va_list myaps, int *i)
 				len = len + 1;
 				_putchar('0');
 			}
-			len = len + hex_lower(str[j]);
+			len = len + hex_lower(str[j], 16);
 		}
 		else
 		{
