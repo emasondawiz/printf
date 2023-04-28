@@ -31,9 +31,9 @@ int intcount(int input, int base)
  * @c: Input value
  * Return: Success
  */
-int funwithplus(long int num, int *id, char c)
+int funwithplus(int num, int *id, char c)
 {
-	long int counter = 0, j, i, exp = 1, bloop = 0, holder = 0, calc, newcal = 0;
+	int counter = 0, j, i, exp = 1, bloop = 0, holder = 0, calc, newcal = 0;
 
 	if (c == ' ')
 	{
