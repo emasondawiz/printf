@@ -171,25 +171,25 @@ int special_address(va_list args, int *ii)
 
 int my_mixers(int mynum, int *gg)
 {
-	int calc, n, count = 0, ld = 0, exp = 1, holder = 0, newcal = 0, i, width;
+	int calc, n, count = 0, ld = 0, exp = 1, holder = 0, newcal = 0, i, width, g = 0;
 
-	width = 5;
+	width = 6;
 
 	if (mynum < 0)
 	{
 		mynum = -(mynum);
+		g = g + 1;
 		_putchar('-');
 	}
-	else
-		_putchar(' ');
 	calc = mynum;
 	n = mynum;
-	count = count + 1;
+
 	while (n / 10 != 0)
 	{
 		count++;
 		n /= 10;
 	}
+	count = count + 1;
 	ld = width - count;
 	if (ld <= 1)
 	{
@@ -199,9 +199,9 @@ int my_mixers(int mynum, int *gg)
 	{
 		ld = ld - 1;
 		for (i = 0; i < ld; i++)
-			_putchar('#');
+			_putchar('0');
 		mix_helper(holder, calc, newcal, exp, count);
 	}
-	*gg = *gg + 1;
-	return (count + 1);
+	*gg = *gg + 3;
+	return (count + g);
 }
