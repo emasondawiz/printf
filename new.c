@@ -53,6 +53,6 @@ int funwithplus(int num, int *id)
 		_putchar(holder + '0');
 		exp = 1;
 	}
-	*id = *id + 2;
+	*id = *id + 1;
 	return (counter + 1 + bloop);
 }
