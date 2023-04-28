@@ -51,6 +51,8 @@ int _printf(const char *format, ...)
 				counter = counter + my_rot13(myaps, &i);
 			else if (format[i + 1] == 'r')
 				counter = counter + my_rev(myaps, &i);
+			else if (format[i + 1] == 'l')
+				counter = counter + funwithplus_1(myaps, &i, format[i + 2]);
 			else
 				counter = counter + allinchar(format[i + 1], 4, myaps, &i);
 		}

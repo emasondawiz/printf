@@ -29,6 +29,7 @@ int intcount(int input, int base)
  * @id: Input value
  * @num: Input value
  * @c: Input value
+ * @b: input value
  * Return: Success
  */
 int funwithplus(int num, int *id, char c, char b)
