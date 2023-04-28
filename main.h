@@ -20,5 +20,6 @@ void mix_helper(int holder, int calc, int newcal, int e, int c);
 int my_rot13(va_list myaps, int *ii);
 int my_rev(va_list myaps, int *ii);
 int intcount(int input, int base);
-int funwithplus(int num, int *id, char c);
+int funwithplus(int num, int *id, char c, char b);
+int assistfunc(int num, char b);
 #endif

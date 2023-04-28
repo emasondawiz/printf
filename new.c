@@ -31,7 +31,7 @@ int intcount(int input, int base)
  * @c: Input value
  * Return: Success
  */
-int funwithplus(int num, int *id, char c)
+int funwithplus(int num, int *id, char c, char b)
 {
 	int counter = 0, j, i, exp = 1, bloop = 0, holder = 0, calc, newcal = 0;
 
@@ -44,6 +44,12 @@ int funwithplus(int num, int *id, char c)
 			_putchar('-');
 			num = -(num);
 		}
+	}
+	else if (c == '#')
+	{
+		counter = counter + assistfunc(num, b);
+		*id = *id + 2;
+		return (counter);
 	}
 	else
 	{
@@ -69,4 +75,43 @@ int funwithplus(int num, int *id, char c)
 	}
 	*id = *id + 2;
 	return (counter + 1 + bloop);
+}
+
+/**
+ * assistfunc - assist function
+ * @num: Input value
+ * @b: Input
+ * Return: Success
+ */
+
+int assistfunc(int num, char b)
+{
+	int count = 0, gh = 0;
+
+	if (num ==  0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	if (num < 0)
+		num = -(num);
+	if (b == 'x')
+	{
+		_putchar('0');
+		_putchar('x');
+		count = count + 2;
+		count = count + conversion(num, 0, 16, &gh);
+	}
+	else if (b == 'X')
+	{
+		_putchar('0');
+		_putchar('X');
+		count = count + 2;
+		count = count + conversion(num, 1, 16, &gh);
+	}
+	else
+	{
+		count = count + conversion(num, 0, 8, &gh);
+	}
+	return (count);
 }
