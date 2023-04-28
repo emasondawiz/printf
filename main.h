@@ -29,4 +29,12 @@ int conversion_1(long int n, int diff, int base, int *ii);
 int fun_3(unsigned long int num);
 int intcount_2(unsigned long int input, int base);
 int assistfunc_1(long int num, char b);
+int funwithplus_2(va_list myaps, int *id, char b);
+int fun_4(short int num);
+int intcount_3(short int input, int base);
+int assistfunc_2(long int num, char b);
+int conversion_2(short int n, int diff, int base, int *ii);
+int fun_5(unsigned short int num);
+int intcount_4(unsigned short int input, int base);
+int assistfunc_3(short int num, char b);
 #endif

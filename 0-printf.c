@@ -53,6 +53,8 @@ int _printf(const char *format, ...)
 				counter = counter + my_rev(myaps, &i);
 			else if (format[i + 1] == 'l')
 				counter = counter + funwithplus_1(myaps, &i, format[i + 2]);
+			else if (format[i + 1] == 'h')
+				counter = counter + funwithplus_2(myaps, &i, format[i + 2]);
 			else
 				counter = counter + allinchar(format[i + 1], 4, myaps, &i);
 		}
