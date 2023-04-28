@@ -45,8 +45,8 @@ int _printf(const char *format, ...)
 				counter = counter + special_string(myaps, &i);
 			else if (format[i + 1] == 'p')
 				counter = counter + special_address(myaps, &i);
-			else if (format[i + 1] == '+')
-				counter = counter + funwithplus(va_arg(myaps, int), &i);
+			else if (format[i + 1] == '+' || format[i + 1] == ' ')
+				counter = counter + funwithplus(va_arg(myaps, int), &i, format[i + 1]);
 			else if (format[i + 1] == 'R')
 				counter = counter + my_rot13(myaps, &i);
 			else if (format[i + 1] == 'r')

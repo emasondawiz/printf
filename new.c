@@ -28,18 +28,32 @@ int intcount(int input, int base)
  * funwithplus - function that does + conversion
  * @id: Input value
  * @num: Input value
+ * @c: Input value
  * Return: Success
  */
-int funwithplus(int num, int *id)
+int funwithplus(int num, int *id, char c)
 {
 	int counter = 0, j, i, exp = 1, bloop = 0, holder = 0, calc, newcal = 0;
 
-	if (num >= 0)
-		_putchar('+');
+	if (c == ' ')
+	{
+		if (num >= 0)
+			_putchar(' ');
+		else
+		{
+			_putchar('-');
+			num = -(num);
+		}
+	}
 	else
 	{
-		_putchar('-');
-		num = -(num);
+		if (num >= 0)
+			_putchar('+');
+		else
+		{
+			_putchar('-');
+			num = -(num);
+		}
 	}
 	calc = num;
 	bloop = intcount(num, 10);
