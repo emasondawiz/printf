@@ -37,6 +37,14 @@ int funwithplus(int num, int *id, char c, char b)
 
 	if (c == ' ')
 	{
+		if (b != 'i' && b != 'd')
+		{
+			_putchar('%');
+			_putchar(' ');
+			counter = counter + 2;
+			*id = *id + 2;
+			return (counter);
+		}
 		if (num >= 0)
 			_putchar(' ');
 		else
