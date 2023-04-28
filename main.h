@@ -24,6 +24,9 @@ int funwithplus(int num, int *id, char c, char b);
 int assistfunc(int num, char b);
 int intcount_1(long int input, int base);
 int funwithplus_1(va_list myaps, int *id, char b);
-int fun2(long int num);
-
+int fun_2(long int num);
+int conversion_1(long int n, int diff, int base, int *ii);
+int fun_3(unsigned long int num);
+int intcount_2(unsigned long int input, int base);
+int assistfunc_1(long int num, char b);
 #endif

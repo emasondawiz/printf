@@ -27,7 +27,7 @@ int intcount_1(long int input, int base)
 /**
  * funwithplus_1 - function that does + conversion
  * @id: Input value
- * @num: Input value
+ * @myaps: Input value
  * @b: input value
  * Return: Success
  */
@@ -35,20 +35,29 @@ int funwithplus_1(va_list myaps, int *id, char b)
 {
 	int counter = 0;
 
-	if (b == 'i' || b == 'd' || b == 'u')
+	if (b == 'i' || b == 'd')
 	{
 		long int num = va_arg(myaps, long int);
 
 		if (num < 0)
 		{
 			num = -(num);
-			if (b != 'u')
-			{
-				_putchar('-');
-				counter = counter + 1;
-			}
+			_putchar('-');
+			counter = counter + 1;
 		}
-		counter = counter + fun2(num);
+		counter = counter + fun_2(num);
+	}
+	else if (b == 'x' || b == 'X' || b == 'o')
+	{
+		long int num = va_arg(myaps, long int);
+
+		counter = counter + assistfunc_1(num, b);
+	}
+	else if (b == 'u')
+	{
+		unsigned long int num = va_arg(myaps, unsigned long int);
+
+		counter = counter + fun_3(num);
 	}
 	*id = *id + 2;
 	return (counter);
@@ -61,9 +70,10 @@ int funwithplus_1(va_list myaps, int *id, char b)
  * Return: Success
  */
 
-int assistfunc_1(int num, char b)
+int assistfunc_1(long int num, char b)
 {
-	int count = 0, gh = 0;
+	long int count = 0;
+	int gh = 0;
 
 	if (num ==  0)
 	{
@@ -74,31 +84,25 @@ int assistfunc_1(int num, char b)
 		num = -(num);
 	if (b == 'x')
 	{
-		_putchar('0');
-		_putchar('x');
-		count = count + 2;
-		count = count + conversion(num, 0, 16, &gh);
+		count = count + conversion_1(num, 0, 16, &gh);
 	}
 	else if (b == 'X')
 	{
-		_putchar('0');
-		_putchar('X');
-		count = count + 2;
-		count = count + conversion(num, 1, 16, &gh);
+		count = count + conversion_1(num, 1, 16, &gh);
 	}
 	else
 	{
-		count = count + conversion(num, 0, 8, &gh);
+		count = count + conversion_1(num, 0, 8, &gh);
 	}
 	return (count);
 }
 /**
- * fun2 - assist function
- * @num - input value
- * Return - Success
+ * fun_2 - assist function
+ * @num: input value
+ * Return: Success
  */
 
-int fun2(long int num)
+int fun_2(long int num)
 {
 	long int j, i, exp = 1, bloop = 0, holder = 0, calc, newcal = 0;
 
@@ -117,3 +121,55 @@ int fun2(long int num)
 	}
 	return (bloop);
 }
+
+/**
+ * conversion_1 - function function
+ * @n: Input value
+ * @diff: Input value
+ * @base: Input value
+ * @ii: Input value
+ * Return: Always 0
+ */
+
+int conversion_1(long int n, int diff, int base, int *ii)
+{
+	long int i, j, counter = 0;
+	long int temp, div, mod = 0;
+	char *arr;
+
+	temp = n, div = n;
+
+	while (temp / base > 0)
+	{
+		temp /= base;
+		counter += 1;
+	}
+	counter = counter + 1;
+	arr = (char *)malloc(counter * sizeof(char));
+	for (i = 0; i < counter; i++)
+	{
+		mod = div % base;
+		if (base == 16 && mod < 10 && diff == 1)
+			*(arr + i) = mod + 48;
+		else if (base == 16 && mod > 9 && diff == 1)
+			*(arr + i) = mod + 55;
+		else if (base == 16 && mod < 10 && diff == 0)
+			*(arr + i) = mod + 48;
+		else if (base == 16 && mod > 9 && diff == 0)
+			*(arr + i) = mod + 87;
+		else
+			*(arr + i) = mod;
+		div = div / base;
+	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		if (base == 16)
+			_putchar(*(arr + j));
+		else
+			_putchar(*(arr + j) + '0');
+	}
+	*ii = *ii + 1;
+	free(arr);
+	return (counter);
+}
+

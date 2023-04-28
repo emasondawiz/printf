@@ -124,3 +124,52 @@ int assistfunc(int num, char b)
 	}
 	return (count);
 }
+
+/**
+ * fun_3 - assist function
+ * @num: input value
+ * Return: Success
+ */
+
+int fun_3(unsigned long int num)
+{
+	unsigned long int j, i, exp = 1, bloop = 0, holder = 0, calc, newcal = 0;
+
+	calc = num;
+
+	bloop = intcount_2(num, 10);
+	for (i = 0; i < bloop; i++)
+	{
+		for (j = i + 1; j < bloop; j++)
+			exp = exp * 10;
+		holder = calc / exp;
+		newcal = calc - (holder * exp);
+		calc = newcal;
+		_putchar(holder + '0');
+		exp = 1;
+	}
+	return (bloop);
+}
+
+/**
+ * intcount_2 - counts the length of an integer
+ * @input: the integer
+ * @base: the divisor
+ * Return: success
+*/
+
+int intcount_2(unsigned long int input, int base)
+{
+	unsigned long int temp, counter;
+
+	temp = input;
+	counter = 0;
+
+	while (temp / base != 0)
+	{
+		temp /= base;
+		counter = counter + 1;
+	}
+	counter = counter + 1;
+	return (counter);
+}
